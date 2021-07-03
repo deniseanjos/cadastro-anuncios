@@ -1,0 +1,31 @@
+{
+  "anuncios": [
+    {
+      "nomeAnuncio": "Promoção de Vendas",
+      "nomeCliente": "Pernambucanas",
+      "dataInicio": "2021-07-05",
+      "dataFinal": "2021-07-06",
+      "investimentoDiario": 1,
+      "relatorioFinal": "\"O valor total investido é de R$ 1, sendo as quantidades máximas: 263 de visualizações, 18 cliques e 3 compartilhamentos.\"",
+      "id": 1
+    },
+    {
+      "nomeAnuncio": "Compre 2 pague 1",
+      "nomeCliente": "Chocolate",
+      "dataInicio": "2021-07-03",
+      "dataFinal": "2021-07-05",
+      "investimentoDiario": 1,
+      "relatorioFinal": "\"O valor total investido é de R$ 2, sendo as quantidades máximas: 525 de visualizações, 37 cliques e 5 compartilhamentos.\"",
+      "id": 2
+    },
+    {
+      "nomeAnuncio": "Cultive novas ideias",
+      "nomeCliente": "Livraria",
+      "dataInicio": "2021-07-03",
+      "dataFinal": "2021-07-04",
+      "investimentoDiario": 3,
+      "relatorioFinal": "\"O valor total investido é de R$ 3, sendo as quantidades máximas: 788 de visualizações, 55 cliques e 8 compartilhamentos.\"",
+      "id": 3
+    }
+  ]
+}

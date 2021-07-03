@@ -1,0 +1,9 @@
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  min-width: 20rem;
+  max-width: 20rem;
+}

@@ -1,0 +1,79 @@
+<div class="container">
+
+<h1>Cadastro de Anuncios</h1>
+
+<form>
+
+  <div class="form-group row">
+    <label for="nomeAnuncio" class="col-2 col-form-label">Nome do Anúncio: </label>
+    <div class="col-10">
+      <input type="text" id="nomeAnuncio" name="nomeAnuncio" placeholder="Ex. Promoção" [(ngModel)]="anuncio.nomeAnuncio">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="nomeCliente" class="col-2 col-form-label">Nome do Cliente: </label>
+    <div class="col-10">
+      <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Ex. Facebook" [(ngModel)]="anuncio.nomeCliente">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="dataInicio" class="col-2 col-form-label">Data de Início: </label>
+    <div class="col-10">
+      <input type="date" id="dataInicio" name="dataInicio" placeholder="Ex. Promoção" [(ngModel)]="anuncio.dataInicio">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="dataFinal" class="col-2 col-form-label">Data Final: </label>
+    <div class="col-10">
+      <input type="date" id="dataFinal" name="dataFinal" placeholder="Ex. Promoção" [(ngModel)]="anuncio.dataFinal">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="investimentoDiario" class="col-2 col-form-label">Investimento Diário: </label>
+    <div class="col-10">
+      <input type="number" id="investimentoDiario" name="investimentoDiario" placeholder="Ex. 1.5" [(ngModel)]="anuncio.investimentoDiario">
+    </div>
+  </div>
+
+  <button type="submit" (click)="cadastrar()">Cadastrar</button>
+
+</form>
+
+<hr>
+
+<h1>Relatórios</h1>
+
+<div class="row d-flex justify-content-center mt-5 mb-5">
+  <div class="col-md-3">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Pesquise por cliente"
+        [(ngModel)]="nomeCliente" (keyup)='filtrarCliente()'>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <input type="date" class="form-control" placeholder="Pesquise por data inicial ou final" title="Pesquise por data inicial ou final"
+        [(ngModel)]="dataFiltro" (keyup)='filtrarData()'>
+    </div>
+  </div>
+</div>
+
+<div class="card-group">
+<div class="card" *ngFor="let anuncio of anuncios | filter:nomeCliente | filter:dataFiltro">
+  <div class="card-body">
+    <p>Nome do Anúncio: {{anuncio.nomeAnuncio}}</p>
+    <p>Cliente: {{anuncio.nomeCliente}}</p>
+    <p>Período: {{anuncio.dataInicio | date: 'dd/MM/yyyy'}} - {{anuncio.dataFinal | date: 'dd/MM/yyyy'}}</p>
+    <p>Investimento diário: {{anuncio.investimentoDiario | currency : 'R$'}}</p>
+    <hr>
+    <p>Relatório</p>
+    <p> {{ anuncio.relatorioFinal }}</p>
+    <button type="submit" (click)="removerAnuncio(anuncio.id)">Deletar</button>
+  </div>
+</div>
+</div>
+</div>
