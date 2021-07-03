@@ -6,7 +6,7 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
 ## Instalação
 
-1. Clone o repositório: `$ git clone https://github.com/deniseanjos/cadastro-anuncios`
+1. Clone o repositório: `git clone https://github.com/deniseanjos/cadastro-anuncios`
 2. Abra no editor de sua preferência (exemplo: VS Code) e instale as dependências através do comando `npm install`
 
 ## Ambiente Local
@@ -22,6 +22,8 @@ Em outro terminal, execute o comando `npm install -g json-server` para instalar 
 - Melhorar UX/UI;
 - Implementar back-end com regras de negócio separadamente;
 - Validação de campos do formulário;
+- Atualizar informações já cadastradas;
+- Entre outros.
 
 ## Problemática
 
