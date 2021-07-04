@@ -1,5 +1,7 @@
 <div class="container">
 
+  <!-- Formulario para cadastro de novos anuncios -->
+
   <h1>Cadastro de Anúncios</h1>
 
   <form class="needs-validation" novalidate>
@@ -38,7 +40,7 @@
       <label for="investimentoDiario" class="col-2 col-form-label">Investimento Diário: </label>
       <div class="col-10">
         <input type="number" id="investimentoDiario" name="investimentoAnuncio" class="form-control" placeholder="Ex. 1.5"
-          [(ngModel)]="anuncio.investimentoDiario" min="1" oninput="validity.valid||(value='');" required>
+          [(ngModel)]="anuncio.investimentoDiario" min="1" required>
       </div>
     </div>
 
@@ -48,7 +50,11 @@
 
   </form>
 
+   <!-- /Formulario para cadastro de novos anuncios -->
+
   <hr>
+
+  <!-- Campo para mostrar os relatórios já criados -->
 
   <h1>Relatórios</h1>
 
@@ -71,7 +77,7 @@
 
     <div class="card border-secondary" *ngFor="let anuncio of anuncios | filter:nomeCliente | filter:dataFiltro">
       <div class="card-body">
-        <h5 class="card-title text-center" title="Nome do Anúncio">{{anuncio.nomeAnuncio}}</h5>
+        <h5 class="card-title text-center" title="Nome do Anúncio">{{anuncio.nomeAnuncio | uppercase }}</h5>
         <p>Cliente: {{anuncio.nomeCliente}}</p>
         <p>Período: {{anuncio.dataInicio | date: 'dd/MM/yyyy'}} - {{anuncio.dataFinal | date: 'dd/MM/yyyy'}}</p>
         <p>Investimento diário: {{anuncio.investimentoDiario | currency : 'R$'}}</p>
@@ -85,5 +91,7 @@
     </div>
 
   </div>
+
+  <!-- /Campo para mostrar os relatórios já criados -->
 
 </div>
