@@ -19,11 +19,11 @@ Em outro terminal, execute o comando `npm install -g json-server` para instalar 
 
 ## Implementações e Melhorias Futuras
 
-- Melhorar UX/UI;
-- Implementar back-end com regras de negócio separadamente;
-- Validação de campos do formulário;
-- Atualizar informações já cadastradas;
-- Entre outros.
+- [ ] Melhorar UX/UI;
+- [ ] Implementar back-end com regras de negócio separadamente;
+- [x] Validação de campos do formulário;
+- [ ] Atualizar informações já cadastradas;
+- [ ] Tratamento de erros.
 
 ## Problemática
 

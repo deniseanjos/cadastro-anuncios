@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { AnunciosService } from './../anuncios.service';
 import { Component, OnInit } from '@angular/core';
 import { AnuncioModel } from './anuncio.model';
@@ -17,6 +18,10 @@ export class AnunciosComponent implements OnInit {
 
   quantidadeDias: number
 
+  //Validação de formulário
+  anuncioValido: boolean = false
+  clienteValido: boolean = false
+
   constructor(
     private anunciosService: AnunciosService
   ) { }
@@ -34,14 +39,20 @@ export class AnunciosComponent implements OnInit {
   }
 
   cadastrar() {
-    console.log(this.anuncio);
+    //Validação das datas informadas
+    var diferencaEmDias = Math.floor((Date.parse(this.anuncio.dataFinal) - Date.parse(this.anuncio.dataInicio)) / 86400000);
+    console.log(diferencaEmDias);
+
+    if (diferencaEmDias <= 0) {
+      alert('Por gentileza, note que a data final precisa ser superior a data inicial.')
+    } else {
     this.anuncio.relatorioFinal = this.gerarRelatorio();
     this.anunciosService.cadastrarAnuncio(this.anuncio).subscribe(anuncio => {
       this.anuncio = new AnuncioModel();
       this.listarAnuncios();
     }, err => {
       console.log('Erro ao cadastrar novo anuncio', err);
-    })
+    })}
   }
 
   removerAnuncio(id) {
@@ -53,8 +64,8 @@ export class AnunciosComponent implements OnInit {
     })
   }
 
-  filtrarCliente(){
-    if(this.nomeCliente == '') {
+  filtrarCliente() {
+    if (this.nomeCliente == '') {
       this.listarAnuncios();
     } else {
       this.anunciosService.filtrarCliente(this.nomeCliente).subscribe((resp: AnuncioModel[]) => {
@@ -63,8 +74,8 @@ export class AnunciosComponent implements OnInit {
     }
   }
 
-  filtrarData(){
-    if(this.dataFiltro == ''){
+  filtrarData() {
+    if (this.dataFiltro == '') {
       this.listarAnuncios();
     } else {
       this.anunciosService.filtrarData(this.dataFiltro).subscribe((resp: AnuncioModel[]) => {
@@ -79,16 +90,39 @@ export class AnunciosComponent implements OnInit {
     var visualizamOriginal = valorTotalInvestido * 30;
     var visualizacaoTotal = visualizamOriginal;
 
-    for(let i = 0; i < 4; i++){
+    for (let i = 0; i < 4; i++) {
       var cliques = (visualizacaoTotal / 100) * 12;
-      var compartilhamentos = (cliques / 20 ) * 3;
+      var compartilhamentos = (cliques / 20) * 3;
       visualizacaoTotal += compartilhamentos * 40;
     }
 
-    var relatorio =  "O valor total investido é de R$ " + Math.round(valorTotalInvestido) + ", sendo as quantidades máximas: " + Math.round(visualizacaoTotal) + " visualizações, " + Math.round(cliques) + " cliques e " + Math.round(compartilhamentos) + " compartilhamentos.";
+    var relatorio = "O valor total investido é de R$ " + Math.round(valorTotalInvestido) + ", sendo as quantidades máximas: " + Math.round(visualizacaoTotal) + " visualizações, " + Math.round(cliques) + " cliques e " + Math.round(compartilhamentos) + " compartilhamentos.";
 
     return JSON.stringify(relatorio);
 
+  }
+
+  //Validação de formulário - Eventos
+
+  validaNomeAnuncio(event: any) {
+    this.anuncioValido = this.validation(event.target.value.length < 3, event);
+  }
+
+  validaNomeCliente(event: any) {
+    this.clienteValido = this.validation(event.target.value.length < 3, event);
+  }
+
+  validation(condicao: boolean, event: any) {
+    let valid = false;
+    if (condicao) {
+      event.target.classList.remove('is-valid');
+      event.target.classList.add('is-invalid');
+    } else {
+      event.target.classList.remove('is-invalid');
+      event.target.classList.add('is-valid');
+      valid = true;
+    }
+    return valid;
   }
 
 }

@@ -2,45 +2,43 @@
 
   <h1>Cadastro de Anúncios</h1>
 
-  <form>
+  <form class="needs-validation" novalidate>
 
-    <div class="form-group row">
+    <div class="form-group row mb-2">
       <label for="nomeAnuncio" class="col-2 col-form-label">Nome do Anúncio: </label>
       <div class="col-10">
-        <input type="text" id="nomeAnuncio" name="nomeAnuncio" placeholder="Ex. Promoção"
-          [(ngModel)]="anuncio.nomeAnuncio">
+        <input type="text" id="nomeAnuncio" class="form-control" name="anuncioNome" placeholder="Ex. Promoção" [(ngModel)]="anuncio.nomeAnuncio" (keyup)="validaNomeAnuncio($event)" required>
+        <div class="invalid-feedback">Favor informar no mínimo 3 caracteres.</div>
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row mb-2">
       <label for="nomeCliente" class="col-2 col-form-label">Nome do Cliente: </label>
       <div class="col-10">
-        <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Ex. Facebook"
-          [(ngModel)]="anuncio.nomeCliente">
+        <input type="text" id="nomeCliente" name="clienteNome" class="form-control" placeholder="Ex. Facebook"
+          [(ngModel)]="anuncio.nomeCliente" (keyup)="validaNomeCliente($event)" required>
+          <div class="invalid-feedback">Favor informar no mínimo 3 caracteres.</div>
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row mb-2">
       <label for="dataInicio" class="col-2 col-form-label">Data de Início: </label>
       <div class="col-4">
-        <input type="date" id="dataInicio" name="dataInicio" placeholder="Ex. Promoção"
-          [(ngModel)]="anuncio.dataInicio">
+        <input type="date" id="dataInicio" name="inicioAnuncio" class="form-control" placeholder="Ex. Promoção"
+          [(ngModel)]="anuncio.dataInicio" required>
       </div>
       <label for="dataFinal" class="col-2 col-form-label">Data Final: </label>
       <div class="col-4">
-        <input type="date" id="dataFinal" name="dataFinal" placeholder="Ex. Promoção" [(ngModel)]="anuncio.dataFinal">
+        <input type="date" id="dataFinal" name="finalAnuncio" class="form-control" placeholder="Ex. Promoção" [(ngModel)]="anuncio.dataFinal" required>
       </div>
     </div>
 
-    <div class="form-group row">
 
-    </div>
-
-    <div class="form-group row">
+    <div class="form-group row mb-2">
       <label for="investimentoDiario" class="col-2 col-form-label">Investimento Diário: </label>
       <div class="col-10">
-        <input type="number" id="investimentoDiario" name="investimentoDiario" placeholder="Ex. 1.5"
-          [(ngModel)]="anuncio.investimentoDiario">
+        <input type="number" id="investimentoDiario" name="investimentoAnuncio" class="form-control" placeholder="Ex. 1.5"
+          [(ngModel)]="anuncio.investimentoDiario" min="1" oninput="validity.valid||(value='');" required>
       </div>
     </div>
 
