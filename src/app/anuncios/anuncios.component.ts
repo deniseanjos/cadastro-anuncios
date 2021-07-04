@@ -2,6 +2,7 @@ import { element } from 'protractor';
 import { AnunciosService } from './../anuncios.service';
 import { Component, OnInit } from '@angular/core';
 import { AnuncioModel } from './anuncio.model';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-anuncios',
@@ -45,6 +46,8 @@ export class AnunciosComponent implements OnInit {
 
     if (diferencaEmDias <= 0) {
       alert('Por gentileza, note que a data final precisa ser superior a data inicial.')
+    } else if (!this.anuncioValido || !this.clienteValido || this.anuncio.investimentoDiario == null) {
+      alert('Por gentileza, preencha o formulário corretamente.')
     } else {
     this.anuncio.relatorioFinal = this.gerarRelatorio();
     this.anunciosService.cadastrarAnuncio(this.anuncio).subscribe(anuncio => {
@@ -96,7 +99,7 @@ export class AnunciosComponent implements OnInit {
       visualizacaoTotal += compartilhamentos * 40;
     }
 
-    var relatorio = "O valor total investido é de R$ " + Math.round(valorTotalInvestido) + ", sendo as quantidades máximas: " + Math.round(visualizacaoTotal) + " visualizações, " + Math.round(cliques) + " cliques e " + Math.round(compartilhamentos) + " compartilhamentos.";
+    var relatorio = "O valor total investido é de R$ " + Math.round(valorTotalInvestido) + "sendo as quantidades máximas: " + Math.round(visualizacaoTotal) + " visualizações, " + Math.round(cliques) + " cliques e " + Math.round(compartilhamentos) + " compartilhamentos.";
 
     return JSON.stringify(relatorio);
 
