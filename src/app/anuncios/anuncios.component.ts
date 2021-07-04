@@ -99,7 +99,7 @@ export class AnunciosComponent implements OnInit {
       visualizacaoTotal += compartilhamentos * 40;
     }
 
-    var relatorio = "O valor total investido é de R$ " + Math.round(valorTotalInvestido) + ", sendo as quantidades máximas: " + Math.round(visualizacaoTotal) + " visualizações, " + Math.round(cliques) + " cliques e " + Math.round(compartilhamentos) + " compartilhamentos.";
+    var relatorio = "O valor total investido é de R$ " + Math.round(valorTotalInvestido) + "sendo as quantidades máximas: " + Math.round(visualizacaoTotal) + " visualizações, " + Math.round(cliques) + " cliques e " + Math.round(compartilhamentos) + " compartilhamentos.";
 
     return JSON.stringify(relatorio);
 
